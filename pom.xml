@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <developers>
+        <developer>
+            <name>HiF</name>
+            <email>heifan@88.com</email>
+        </developer>
+    </developers>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.5</version>
+    </parent>
+
+    <groupId>com.heifan.code</groupId>
+    <artifactId>Code_collect</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <properties>
+        <spring.boot.version>2.3.4.RELEASE</spring.boot.version>
+        <mysql.version>5.1.49</mysql.version>
+        <hutool.version>5.4.0</hutool.version>
+        <jjwt.version>0.9.0</jjwt.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <lmbok.version>1.18.4</lmbok.version>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <!-- SpringBoot web starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- SpringBoot web undertow -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>wildfly-client-config</artifactId>
+                    <groupId>org.wildfly.client</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <!-- com.zaxxer.hikari.HikariDataSource -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+        <!-- mybatis -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.3.2</version>
+        </dependency>
+        <!--mp代码生成器-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.3.2</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>mybatis-plus-extension</artifactId>
+                    <groupId>com.baomidou</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.31</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- SpringBoot aop -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!-- SpringBoot redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- SpringBoot redis Lettuce 缺少 common-pool2-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+        <!-- lombok annotation  -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <!-- test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- 单元测试 -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- google gson json   -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <!-- 工具包 https://github.com/looly/hutool/-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>${hutool.version}</version>
+        </dependency>
+        <!-- jjwt  -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19.1</version>
+                    <configuration>
+                        <skipTests>true</skipTests>
+                        <forkMode>once</forkMode>
+                        <argLine>-Dfile.encoding=UTF-8</argLine>
+                    </configuration>
+                    <!-- 插件手动匹配JUnit 目前是使用4.10的版本-->
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.surefire</groupId>
+                            <artifactId>surefire-junit47</artifactId>
+                            <version>2.19.1</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+                <plugin>
+                    <groupId>pl.project13.maven</groupId>
+                    <artifactId>git-commit-id-plugin</artifactId>
+                    <version>4.0.0</version>
+                    <executions>
+                        <execution>
+                            <id>get-the-git-infos</id>
+                            <phase>initialize</phase>
+                            <goals>
+                                <goal>revision</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <!-- ".git"文件路径;默认值:${project.basedir}/.git; -->
+                        <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                        <!--,构建过程中,是否打印详细信息;默认值:false;-->
+                        <verbose>false</verbose>
+                        <!--日期格式;默认值:dd.MM.yyyy '@' HH:mm:ss z;-->
+                        <dateFormat>yyyy-MM-dd HH:mm:ss</dateFormat>
+                        <prefix>git</prefix>
+                        <injectAllReactorProjects>true</injectAllReactorProjects>
+                        <generateGitPropertiesFile>false</generateGitPropertiesFile>
+                        <format>json</format>
+                        <gitDescribe>
+                            <!--是否生成描述属性-->
+                            <skip>false</skip>
+                            <!--提交操作未发现tag时,仅打印提交操作ID,-->
+                            <always>false</always>
+                            <!--构建触发时,代码有修改时(即"dirty state"),添加指定后缀;默认值:"";-->
+                            <dirty>-dirty</dirty>
+                        </gitDescribe>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <!-- 其他仓库,按设定顺序进行查找. -->
+    <repositories>
+        <repository>
+            <id>org.springframework.maven.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>https://maven.springframework.org/milestone</url>
+        </repository>
+        <!-- 阿里云的maven仓库 -->
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <url>https://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+</project>
