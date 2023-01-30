@@ -10,6 +10,9 @@
             <email>heifan@88.com</email>
         </developer>
     </developers>
+    <modules>
+        <module>heifan-code-common</module>
+    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
