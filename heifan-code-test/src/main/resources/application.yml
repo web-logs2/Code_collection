@@ -10,7 +10,7 @@ spring:
       add-mappings: false
 
 server:
-  port: 0
+  port: 50081
   servlet:
     context-path: /heifan/test
 

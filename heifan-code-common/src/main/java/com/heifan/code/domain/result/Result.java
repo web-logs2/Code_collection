@@ -31,14 +31,6 @@ public class Result<T> implements Serializable {
         return result;
     }
 
-    public static <T> Result<T> success(String msg) {
-        Result<T> result = new Result<>();
-        result.setSuccess(Boolean.TRUE);
-        result.setCode(SysConstant.ResultCode.SUCCESS);
-        result.setMsg(msg);
-        return result;
-    }
-
     public static <T> Result<T> success(Integer status, String msg) {
         Result<T> result = new Result<>();
         result.setSuccess(Boolean.TRUE);
