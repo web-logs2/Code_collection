@@ -1,7 +1,7 @@
 package com.heifan.code.mdc;
 
 import cn.hutool.core.util.StrUtil;
-import com.weliner.business.config.mdc.dto.HttpApiDto;
+import com.heifan.code.mdc.dto.HttpApiDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.slf4j.MDC;

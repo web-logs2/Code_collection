@@ -12,6 +12,7 @@
     </developers>
     <modules>
         <module>heifan-code-common</module>
+        <module>heifan-code-test</module>
     </modules>
 
     <parent>

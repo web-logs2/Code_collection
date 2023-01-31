@@ -18,7 +18,7 @@ public class MdcLogImportSelector implements ImportSelector {
             Boolean enable = (Boolean) attributes.get("enable");
             if (enable) {
                 return new String[] {
-                        "com.weliner.business.config.mdc.MdcApiLogAutoConfiguration",
+                        "com.heifan.code.mdc.MdcApiLogAutoConfiguration",
                 };
             }
         }
