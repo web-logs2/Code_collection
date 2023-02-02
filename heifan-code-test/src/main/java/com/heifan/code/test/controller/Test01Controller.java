@@ -2,6 +2,8 @@ package com.heifan.code.test.controller;
 
 import cn.hutool.core.lang.Validator;
 import com.heifan.code.domain.result.Result;
+import com.heifan.code.exception.BizException;
+import com.heifan.code.exception.MessageCodeEnum;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +20,7 @@ public class Test01Controller {
     @PostMapping("/get")
     public Object getTest(HttpServletRequest request, HttpServletResponse response){
         if (Validator.isNotNull(request)){
-            throw new RuntimeException("gg");
+            throw new BizException(MessageCodeEnum.SERVER_ERROR);
         }
         return Result.success("post success!");
     }

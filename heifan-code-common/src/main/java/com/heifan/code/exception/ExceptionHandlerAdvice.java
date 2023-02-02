@@ -36,7 +36,7 @@ public class ExceptionHandlerAdvice {
 
     private void sendAlarmNotice(Throwable e, String msg, String ext, String blamedFor) {
         if (null != alarmNoticeManage) {
-            if (SpringContextHelper.isTestEnv() || SpringContextHelper.isProdEnv()) {
+            if (SpringContextHelper.isTestEnv() || SpringContextHelper.isProdEnv() || SpringContextHelper.isDevEnv()) {
                 String appTraceId = MDC.get(MdcApiConstant.HTTP_HEADER_TRACE_ID);
                 if (StrUtil.isEmpty(appTraceId)) {
                     appTraceId = "未启用服务链路追踪";

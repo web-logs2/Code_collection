@@ -169,12 +169,12 @@ public class ExceptionNotice {
         }
         stringBuilder.append("异常信息：").append(exceptionMessage).append("\n");
         StringBuilder parameBuilder = new StringBuilder();
-        parameBuilder.append(String.join(",", traceInfo.stream().limit(3).map(x -> x.toString()).collect(toList()))).append("\r\n");
+        parameBuilder.append(String.join(",", traceInfo.stream().limit(3).collect(toList()))).append("\r\n");
         if (parameBuilder.toString().length() > 2500) {
-            String str = parameBuilder.toString().substring(0, 2500);
-            stringBuilder.append("异常追踪：").append("\n`").append(str).append("`\n");
+            String str = parameBuilder.substring(0, 2500);
+            stringBuilder.append(">>异常追踪：").append("\n`").append(str).append("`\n");
         } else {
-            stringBuilder.append("异常追踪：").append("\n`").append(parameBuilder.toString()).append("`\n");
+            stringBuilder.append(">>异常追踪：").append("\n`").append(parameBuilder).append("`\n");
         }
         return stringBuilder.toString();
     }
