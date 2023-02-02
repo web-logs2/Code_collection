@@ -34,10 +34,16 @@
         <jjwt.version>0.9.0</jjwt.version>
         <slf4j.version>1.7.21</slf4j.version>
         <lmbok.version>1.18.4</lmbok.version>
+        <openfeign.version>3.0.0</openfeign.version>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>${openfeign.version}</version>
+        </dependency>
         <!-- SpringBoot web starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

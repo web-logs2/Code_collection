@@ -19,3 +19,16 @@ mybatis-plus:
   type-aliases-package: com.heifan.code.test.domain.entity
   configuration:
     log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+alarm:
+  project-name: ${spring.application.name}
+  default-notice: HiF
+  token-limit-per-minute: 18
+  web-hook-dev-token:
+
+  web-hook-pro-token:
+
+  notice:
+    - HiF: 17976598762
+  type:
+    FS
