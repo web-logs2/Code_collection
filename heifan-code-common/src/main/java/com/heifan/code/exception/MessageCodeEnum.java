@@ -38,7 +38,11 @@ public enum MessageCodeEnum {
     /**
      * 用户其它设备登录中
      */
-    USER_OFFLINE(604, "用户其它设备登录中");
+    USER_OFFLINE(604, "用户其它设备登录中"),
+    /**
+     * 请求不在白名单内
+     */
+    NOT_IN_THE_WHITELIST(605, "请求不在白名单内");
 
     /**
      * 状态码值
