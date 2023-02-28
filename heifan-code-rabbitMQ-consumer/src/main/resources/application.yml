@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: heifan-code-mqc
+  profiles:
+    active: dev
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+
+server:
+  port: 50083
+  servlet:
+    context-path: /heifan/mqc
+
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.heifan.code.test.domain.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+alarm:
+  project-name: ${spring.application.name}
+  default-notice: HiF
+  token-limit-per-minute: 18
+  web-hook-dev-token:
+
+  web-hook-pro-token:
+
+  notice:
+    - HiF: 17976598762
+  type:
+    FS

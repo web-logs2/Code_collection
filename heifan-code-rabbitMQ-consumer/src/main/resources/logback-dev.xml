@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false" scan="true" scanPeriod="1 seconds">
+    <!-- 配置参数logDir读取application.yml中的spring.application.name属性，如果没有配置，默认是只logback -->
+    <springProperty scope="context" name="log.path" source="logback.file.path"/>
+    <springProperty scope="context" name="contextName"  source="spring.application.name" defaultValue="logback" />
+
+    <contextName>${contextName}</contextName>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date %level %logger{10} [%file : %line] [%X{AppTraceId}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}${contextName}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}${contextName}.%d{yyyy-MM-dd}.zip</fileNamePattern>
+            <!-- 保存三十天的数据 -->
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %level %logger{10} [%file : %line] [%X{AppTraceId}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 异步输出 -->
+    <appender name="ASYNC-INFO" class="ch.qos.logback.classic.AsyncAppender">
+        <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+        <discardingThreshold>0</discardingThreshold>
+        <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>256</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+        <appender-ref ref="file"/>
+    </appender>
+
+    <springProfile name="dev">
+        <!-- 开发环境时激活 -->
+        <root level="info">
+            <appender-ref ref="console" />
+            <appender-ref ref="file"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="dev,test">
+        <!-- 开发，测试的时候激活-->
+        <root level="info">
+            <appender-ref ref="console" />
+            <appender-ref ref="file"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <!-- 当 "生产" 环境时，该配置不激活-->
+        <root level="info">
+            <appender-ref ref="console" />
+            <appender-ref ref="file"/>
+        </root>
+    </springProfile>
+
+</configuration>
