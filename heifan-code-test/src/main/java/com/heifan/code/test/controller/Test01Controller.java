@@ -19,9 +19,6 @@ public class Test01Controller {
 
     @PostMapping("/get")
     public Object getTest(HttpServletRequest request, HttpServletResponse response){
-        if (Validator.isNotNull(request)){
-            throw new BizException(MessageCodeEnum.SERVER_ERROR);
-        }
         return Result.success("post success!");
     }
 }
