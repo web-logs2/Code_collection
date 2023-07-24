@@ -25,10 +25,17 @@ alarm:
   default-notice: HiF
   token-limit-per-minute: 18
   web-hook-dev-token:
-
+    - 82de13ee-591e-4f08-be63-73f355f8c767
+    - 0a4bea15-27b6-408c-ba58-974a111043f7
+    - 566d4ab8-6903-4dec-b3ae-a6c855740690
+    - cf5487a6-5789-4da5-80f3-eff8fa032fe2
+    - 2acf183d-594f-482b-9513-c265fffaaec2
   web-hook-pro-token:
-
+    - 82de13ee-591e-4f08-be63-73f355f8c767
+    - 0a4bea15-27b6-408c-ba58-974a111043f7
+    - 566d4ab8-6903-4dec-b3ae-a6c855740690
+    - cf5487a6-5789-4da5-80f3-eff8fa032fe2
+    - 2acf183d-594f-482b-9513-c265fffaaec2
   notice:
     - HiF: 17976598762
-  type:
-    FS
+  type: FS
